@@ -1,0 +1,16 @@
+{
+	"version": 3,
+	"file": "main.css",
+	"sources": [
+		"scss/main.scss",
+		"scss/_reset.scss",
+		"scss/_fonts.scss",
+		"scss/_variables.scss",
+		"scss/_mixins.scss",
+		"scss/_icons.scss",
+		"scss/_base.scss",
+		"scss/_components.scss"
+	],
+	"names": [],
+	"mappings": "AMAA,AAAA,EAAE,CAAA;EACE,KAAK,EAAE,GAAG,GACX"
+}
