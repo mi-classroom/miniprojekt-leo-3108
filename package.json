@@ -14,11 +14,12 @@
     "build:css": "node-sass --include-path src/styles/scss src/styles/scss/main.scss dist/styles/main.css --output-style compressed",
     "build": "npm run build:clean && npm run build:copy && npm run build:css",
     "clean": "rimraf dist",
-    "mkdirs": "npx mkdirp -p dist/js && npx mkdirp -p dist/styles && npx mkdirp -p dist/assets && npx mkdirp -p dist/images",
+    "mkdirs": "npx mkdirp -p dist/scripts && npx mkdirp -p dist/styles && npx mkdirp -p dist/assets && npx mkdirp -p dist/images",
     "copy:assets": "cp -r src/assets/* dist/assets/",
     "copy:images": "cp -r src/images/* dist/images/",
     "copy:html": "node helper/copy-html.js .html",
-    "copy": "npm run copy:assets && npm run copy:html && npm run copy:images"
+    "copy:scripts": "cp -r src/scripts/* dist/scripts/",
+    "copy": "npm run copy:assets && npm run copy:html && npm run copy:scripts"
   },
   "repository": {
     "type": "git",
@@ -36,5 +37,8 @@
     "node-sass": "^4.14.1",
     "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.2"
+  },
+  "dependencies": {
+    "helper": "0.0.13"
   }
 }
