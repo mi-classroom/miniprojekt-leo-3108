@@ -32,6 +32,9 @@
   },
   "homepage": "https://github.com/mi-classroom/miniprojekt-leo-3108#readme",
   "devDependencies": {
+    "eslint": "^7.5.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
     "findit": "^2.0.0",
     "mkdirp": "^1.0.4",
     "node-sass": "^4.14.1",
