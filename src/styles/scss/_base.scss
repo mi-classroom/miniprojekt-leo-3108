@@ -31,6 +31,13 @@ p{
   font-size: $d-s;
 }
 
+/* Allgemeines
+############################################################################ */
+
+body{
+  margin: 0;
+}
+
 /* Grid
 ############################################################################ */
 
@@ -39,11 +46,25 @@ header{
   grid-template-columns: repeat(12, 60px);
   grid-gap: 20px;
   justify-content:center;
+  align-items: center;
 }
 
-main{
+.yearindicator{
   display: grid;
   grid-template-columns: repeat(12, 60px);
   grid-gap: 20px;
   justify-content:center;
+  align-items: center;
+  margin-top: $d-m;
+  margin-bottom: $d-m;
+}
+
+.pictures{
+  display: grid;
+  grid-template-columns: repeat(6, 140px);
+  place-items: start;
+  grid-gap: 20px;
+  justify-content:center;
+  margin-top: $d-m;
+  margin-bottom: $d-m;
 }
