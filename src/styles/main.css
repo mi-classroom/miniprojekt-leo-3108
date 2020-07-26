@@ -1,4 +1,73 @@
+@font-face {
+  font-family: Source Sans Pro Normal;
+  font-style: normal;
+  font-weight: 400;
+  src: url(../assets/fonts/Source-Sans-Pro/SourceSansPro-Regular.ttf); }
+
+@font-face {
+  font-family: Source Sans Pro Bold;
+  font-style: bold;
+  font-weight: 600;
+  src: url(../assets/fonts/Source-Sans-Pro/SourceSansPro-Bold.ttf); }
+
+/* Sizes
+---------------------------------------------------------------------------- */
+/* Headlines
+############################################################################ */
 h1 {
-  color: red; }
+  font-family: Source Sans Pro Bold;
+  font-size: 66; }
+
+h2 {
+  font-family: Source Sans Pro Bold;
+  font-size: 31.5; }
+
+h3 {
+  font-family: Source Sans Pro Bold;
+  font-size: 25; }
+
+h4 {
+  font-family: Source Sans Pro Bold;
+  font-size: 16; }
+
+p {
+  font-family: Source Sans Pro Normal;
+  font-size: 16; }
+
+.id {
+  font-family: Source Sans Pro Normal;
+  font-size: 10; }
+
+/* Grid
+############################################################################ */
+header {
+  display: grid;
+  grid-template-columns: repeat(12, 60px);
+  grid-gap: 20px;
+  justify-content: center; }
+
+main {
+  display: grid;
+  grid-template-columns: repeat(12, 60px);
+  grid-gap: 20px;
+  justify-content: center; }
+
+header {
+  border-bottom: solid;
+  border-bottom-width: 1px; }
+  header h1 {
+    grid-column-start: 1; }
+  header .dropdown {
+    grid-column-start: 12;
+    vertical-align: middle; }
+
+.dropdown {
+  width: 200px; }
+
+.yearindicator__year {
+  grid-column-start: 5; }
+
+.yearindicator__linie {
+  grid-column-start: 2; }
 
 /*# sourceMappingURL=main.css.map */

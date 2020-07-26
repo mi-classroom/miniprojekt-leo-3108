@@ -1,0 +1,31 @@
+header{
+    border-bottom: solid;
+    border-bottom-width: 1px;
+
+    h1{
+        grid-column-start: 1;
+    }
+
+    .dropdown {
+        grid-column-start: 12;
+        vertical-align: middle;
+    }
+}
+
+.dropdown {
+    width: 200px;
+
+    &__content {
+
+    }
+}
+
+.yearindicator {
+    &__year {
+        grid-column-start: 5
+    }
+    &__linie {
+        grid-column-start: 2
+    }
+ 
+}

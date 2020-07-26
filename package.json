@@ -19,6 +19,7 @@
     "copy:images": "cp -r src/images/* dist/images/",
     "copy:html": "node helper/copy-html.js .html",
     "copy:scripts": "cp -r src/scripts/* dist/scripts/",
+    "copy:templates": "cp -r src/templates/* dist/templates/",
     "copy": "npm run copy:assets && npm run copy:html && npm run copy:scripts"
   },
   "repository": {
