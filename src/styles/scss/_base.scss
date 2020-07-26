@@ -1,3 +1,49 @@
+/* Headlines
+############################################################################ */
+
 h1{
-    color: red;
-  }
+  font-family: Source Sans Pro Bold;
+  font-size: $d-xxl;
+}
+
+h2{
+  font-family: Source Sans Pro Bold;
+  font-size: $d-xl;
+}
+
+h3{
+  font-family: Source Sans Pro Bold;
+  font-size: $d-l;
+}
+
+h4{
+  font-family: Source Sans Pro Bold;
+  font-size: $d-m;
+}
+
+p{
+  font-family: Source Sans Pro Normal;
+  font-size: $d-m;
+}
+
+.id{
+  font-family: Source Sans Pro Normal;
+  font-size: $d-s;
+}
+
+/* Grid
+############################################################################ */
+
+header{
+  display: grid;
+  grid-template-columns: repeat(12, 60px);
+  grid-gap: 20px;
+  justify-content:center;
+}
+
+main{
+  display: grid;
+  grid-template-columns: repeat(12, 60px);
+  grid-gap: 20px;
+  justify-content:center;
+}
