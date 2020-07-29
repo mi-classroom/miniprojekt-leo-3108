@@ -38,33 +38,28 @@ body{
   margin: 0;
 }
 
-/* Grid
+main{
+  padding-top: 80px;
+}
+
+/* Grids
 ############################################################################ */
 
 header{
   display: grid;
   grid-template-columns: repeat(12, 60px);
   grid-gap: 20px;
-  justify-content:center;
-  align-items: center;
 }
 
 .yearindicator{
   display: grid;
   grid-template-columns: repeat(12, 60px);
   grid-gap: 20px;
-  justify-content:center;
-  align-items: center;
-  margin-top: $d-m;
-  margin-bottom: $d-m;
 }
 
-.pictures{
+.picturelist{
   display: grid;
   grid-template-columns: repeat(6, 140px);
   place-items: start;
   grid-gap: 20px;
-  justify-content:center;
-  margin-top: $d-m;
-  margin-bottom: $d-m;
 }
