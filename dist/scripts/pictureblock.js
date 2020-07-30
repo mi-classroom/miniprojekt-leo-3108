@@ -11,7 +11,6 @@ async function fetchData(apiURL, parseJSON = true) {
   }
   return data;
 }
-
 async function main() {
   let DataDe = await fetchData('./data/json/cda-paintings-v2.de.json');
   DataDe = DataDe.items;
@@ -31,8 +30,6 @@ async function main() {
   for (let i = 0; i < year.length; i++) {
     year[i] = { year: year[i] };
   }
-
-  console.log(year);
 
   const mustacheElement = document.querySelector('main');
 

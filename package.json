@@ -14,13 +14,14 @@
     "build:css": "node-sass --include-path src/styles/scss src/styles/scss/main.scss dist/styles/main.css --output-style compressed",
     "build": "npm run build:clean && npm run build:copy && npm run build:css",
     "clean": "rimraf dist",
-    "mkdirs": "npx mkdirp -p dist/scripts && npx mkdirp -p dist/styles && npx mkdirp -p dist/assets && npx mkdirp -p dist/images && npx mkdirp -p dist/scripts && npx mkdirp -p dist/templates",
+    "mkdirs": "npx mkdirp -p dist/scripts && npx mkdirp -p dist/styles && npx mkdirp -p dist/assets && npx mkdirp -p dist/images && npx mkdirp -p dist/scripts && npx mkdirp -p dist/templates && npx mkdirp -p dist/data",
     "copy:assets": "cp -r src/assets/* dist/assets/",
     "copy:images": "cp -r src/images/* dist/images/",
     "copy:html": "node helper/copy-html.js .html",
     "copy:scripts": "cp -r src/scripts/* dist/scripts/",
     "copy:templates": "cp -r src/templates/* dist/templates/",
-    "copy": "npm run copy:assets && npm run copy:html && npm run copy:templates && npm run copy:scripts"
+    "copy:data": "cp -r src/data/* dist/data/",
+    "copy": "npm run copy:assets && npm run copy:html && npm run copy:templates && npm run copy:scripts && npm run copy:data"
   },
   "repository": {
     "type": "git",
