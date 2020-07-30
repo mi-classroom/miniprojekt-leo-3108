@@ -5,6 +5,10 @@ header{
     background-color: white;
     border-bottom: solid;
     border-bottom-width: 1px;
+    position:fixed;
+    top: 0;
+    left: 0;
+    right: 0;
 
     .logo{
         grid-column: 1/11;

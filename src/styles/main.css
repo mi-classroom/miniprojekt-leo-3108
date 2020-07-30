@@ -70,7 +70,11 @@ header {
   justify-content: center;
   background-color: white;
   border-bottom: solid;
-  border-bottom-width: 1px; }
+  border-bottom-width: 1px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0; }
   header .logo {
     grid-column: 1/11;
     font-family: Source Sans Pro Bold;
