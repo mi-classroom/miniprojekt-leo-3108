@@ -103,6 +103,14 @@ header {
     grid-column: 12/12;
     grid-row: 1; }
 
+.yearindicator__button-close {
+  transform: rotate(180deg);
+  transition: transform 1s; }
+
+.yearindicator__button-open {
+  transform: rotate(0deg);
+  transition: transform 1s; }
+
 .picturelist {
   justify-content: center;
   margin-top: 16px;
@@ -113,5 +121,13 @@ header {
       object-fit: cover;
       width: 140px;
       height: 140px; }
+
+.picturelist-visible {
+  display: '';
+  transition: visibility 0s, opacity 0.5s linear; }
+
+.picturelist-invisible {
+  transition: width 2s, height 2s, background-color 2s, transform 2s;
+  display: none; }
 
 /*# sourceMappingURL=main.css.map */

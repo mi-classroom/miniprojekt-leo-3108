@@ -11,6 +11,37 @@ async function fetchData(apiURL, parseJSON = true) {
   }
   return data;
 }
+
+function togglevisibility(year) {
+  const picturelist = document.querySelector(`.picturelist__${year}`);
+  const button = document.querySelector(`.yearindicator__button-${year}`);
+
+  console.log(picturelist.className);
+  console.log(button.className);
+
+  if (picturelist.className === `picturelist picturelist__${year} picturelist-invisible`) {
+    button.className = `yearindicator__button yearindicator__button-${year} yearindicator__button-open`;
+    picturelist.className = `picturelist picturelist__${year} picturelist-visible`;
+    console.log(picturelist.className);
+  } else {
+    picturelist.className = `picturelist picturelist__${year} picturelist-invisible`;
+    button.className = `yearindicator__button yearindicator__button-${year} yearindicator__button-close`;
+    console.log(picturelist.className);
+  }
+}
+
+function accordeon() {
+  const yearindicatorButtons = document.querySelectorAll('.yearindicator__button');
+
+  yearindicatorButtons.forEach((button) => {
+    button.addEventListener('click', (event) => {
+      const buttonname = button.className;
+      const year = parseInt(buttonname.replace(/[^0-9\.]/g, ''), 10);
+      togglevisibility(year);
+    });
+  });
+}
+
 async function main() {
   let DataDe = await fetchData('./data/json/cda-paintings-v2.de.json');
   DataDe = DataDe.items;
@@ -37,6 +68,7 @@ async function main() {
 
   const renderedSection = Mustache.render(yearTemplate, { year });
   mustacheElement.innerHTML = renderedSection;
+  accordeon();
 }
 
 main();

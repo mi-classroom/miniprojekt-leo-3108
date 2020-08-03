@@ -48,6 +48,18 @@ header{
     }
 }
 
+.yearindicator__button{
+    &-close{
+        transform: rotate(180deg);
+        transition: transform 1s;
+    }
+
+    &-open{
+        transform: rotate(0deg);
+        transition: transform 1s;
+    }
+}
+
 .picturelist{
     justify-content:center;
     margin-top: $d-m;
@@ -61,4 +73,17 @@ header{
             height: 140px;
         }
     }
+}
+
+.picturelist{
+    &-visible{
+        display: '';
+        transition: visibility 0s, opacity 0.5s linear;
+    }
+
+    &-invisible{
+        transition: width 2s, height 2s, background-color 2s, transform 2s;
+        display: none;
+    }
+
 }

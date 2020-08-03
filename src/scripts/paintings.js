@@ -12,6 +12,17 @@ async function fetchData(apiURL, parseJSON = true) {
   return data;
 }
 
+function overlay() {
+  const paintings = document.querySelectorAll('.painting');
+
+  paintings.forEach((painting) => {
+    painting.addEventListener('click', (bild) => {
+      const paitingname = painting.className;
+      console.log(`${paitingname}`);
+    });
+  });
+}
+
 async function main() {
   let DataDe = await fetchData('./data/json/cda-paintings-v2.de.json');
   DataDe = DataDe.items;
@@ -27,15 +38,16 @@ async function main() {
 
     // Gemälde, welche keine Grafik haben, werden nicht auf der Website angezeigt
     if (element.images !== null) {
-      let link = element.images.sizes.m;
-      link = link.src;
+      const link = element.images.sizes.m.src;
+      const id = element.objectId;
 
       const mustacheElement = document.querySelector(`.picturelist__${jahr}`);
-      const renderedSection = Mustache.render(paintingsTemplate, { link });
+      const renderedSection = Mustache.render(paintingsTemplate, { link, id });
 
       mustacheElement.innerHTML += renderedSection;
     }
   });
+  overlay();
 }
 
 main();
