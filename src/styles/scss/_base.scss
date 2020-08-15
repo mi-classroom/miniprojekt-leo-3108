@@ -57,9 +57,24 @@ header{
   grid-gap: 20px;
 }
 
-.picturelist{
+.paintinglist{
   display: grid;
   grid-template-columns: repeat(6, 140px);
   place-items: start;
   grid-gap: 20px;
+}
+
+.card{
+  display: grid;
+  grid-template-columns: repeat(6, 140px);
+  place-items: start;
+  grid-gap: 20px;
+  overflow: hidden;
+
+  &__information-flex{
+    grid-column: 4/7;
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+  }
 }

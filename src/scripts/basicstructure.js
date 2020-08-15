@@ -12,21 +12,18 @@ async function fetchData(apiURL, parseJSON = true) {
   return data;
 }
 
+// Accordeon
+
 function togglevisibility(year) {
-  const picturelist = document.querySelector(`.picturelist__${year}`);
+  const paintinglist = document.querySelector(`.paintinglist__${year}`);
   const button = document.querySelector(`.yearindicator__button-${year}`);
 
-  console.log(picturelist.className);
-  console.log(button.className);
-
-  if (picturelist.className === `picturelist picturelist__${year} picturelist-invisible`) {
+  if (paintinglist.className === `paintinglist paintinglist__${year} paintinglist-invisible`) {
     button.className = `yearindicator__button yearindicator__button-${year} yearindicator__button-open`;
-    picturelist.className = `picturelist picturelist__${year} picturelist-visible`;
-    console.log(picturelist.className);
+    paintinglist.className = `paintinglist paintinglist__${year} paintinglist-visible`;
   } else {
-    picturelist.className = `picturelist picturelist__${year} picturelist-invisible`;
+    paintinglist.className = `paintinglist paintinglist__${year} paintinglist-invisible`;
     button.className = `yearindicator__button yearindicator__button-${year} yearindicator__button-close`;
-    console.log(picturelist.className);
   }
 }
 
@@ -42,11 +39,11 @@ function accordeon() {
   });
 }
 
+// Erstellt die Jahres-Teilbereiche
+
 async function main() {
   let DataDe = await fetchData('./data/json/cda-paintings-v2.de.json');
   DataDe = DataDe.items;
-  let DataEn = await fetchData('./data/json/cda-paintings-v2.en.json');
-  DataEn = DataEn.items;
 
   let year = [];
 
@@ -58,13 +55,13 @@ async function main() {
   year.sort();
   year = year.filter((elem, index, self) => index === self.indexOf(elem));
 
-  for (let i = 0; i < year.length; i++) {
+  for (let i = 0; i < year.length; i += 1) {
     year[i] = { year: year[i] };
   }
 
   const mustacheElement = document.querySelector('main');
 
-  const yearTemplate = await fetchData('./templates/pictureblock.html', false);
+  const yearTemplate = await fetchData('./templates/basicstructure.html', false);
 
   const renderedSection = Mustache.render(yearTemplate, { year });
   mustacheElement.innerHTML = renderedSection;
