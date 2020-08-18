@@ -71,6 +71,9 @@ body {
 
 main {
   padding-top: 80px; }
+  @media screen and (max-width: 1000px) {
+    main {
+      padding-top: 0px; } }
 
 /* Grids
 ############################################################################ */
@@ -115,11 +118,7 @@ header {
   overflow: hidden; }
   @media screen and (max-width: 1000px) {
     .card {
-      display: grid;
-      grid-template-rows: repeat(6);
-      place-items: start;
-      grid-gap: 20px;
-      overflow: hidden; } }
+      display: block; } }
 
 header {
   padding: 20px;
@@ -151,7 +150,7 @@ header {
       border-bottom: none;
       position: fixed;
       z-index: 2;
-      top: 0; }
+      top: 91%; }
       header .logo {
         grid-column: 1;
         font-family: Source Sans Pro Bold;
@@ -189,7 +188,9 @@ header {
     user-select: none; }
   @media screen and (max-width: 1000px) {
     .yearindicator {
-      background-color: #222222; }
+      background-color: #222222;
+      margin-top: 2px;
+      margin-bottom: 2px; }
       .yearindicator__jahreszahl {
         grid-column: 1;
         grid-row: 1;
@@ -225,15 +226,16 @@ header {
       width: 140px;
       height: 140px; }
   @media screen and (max-width: 1000px) {
-    .paintinglist .painting {
-      margin: 0;
-      width: 120px;
-      height: 120px;
-      cursor: pointer; }
-      .paintinglist .painting img {
-        object-fit: cover;
+    .paintinglist {
+      margin: 0; }
+      .paintinglist .painting {
         width: 120px;
-        height: 120px; } }
+        height: 120px;
+        cursor: pointer; }
+        .paintinglist .painting img {
+          object-fit: cover;
+          width: 120px;
+          height: 120px; } }
 
 .paintinglist-visible {
   display: ''; }
@@ -264,6 +266,15 @@ header {
   left: 50%;
   background-color: #222222;
   border: 2px solid #B4B4B4; }
+  @media screen and (max-width: 1000px) {
+    .card {
+      overflow: hidden;
+      height: 100%;
+      width: 100%;
+      margin-top: 0;
+      margin-left: 0;
+      top: 0;
+      left: 0; } }
   .card h1 {
     color: white;
     font-family: Source Sans Pro Bold;
@@ -279,6 +290,11 @@ header {
     width: 460px;
     height: 500px;
     background-color: black; }
+    @media screen and (max-width: 1000px) {
+      .card img {
+        grid-row: 1;
+        height: 400px;
+        width: 100%; } }
   .card .card__button-close {
     position: absolute;
     right: 10px;
@@ -302,6 +318,10 @@ header {
   .card__information {
     grid-column: 4/7;
     margin-right: 20px; }
+    @media screen and (max-width: 1000px) {
+      .card__information {
+        margin-left: 10px;
+        margin-right: 10px; } }
     .card__information-title {
       max-width: 400px;
       overflow: hidden; }
@@ -311,13 +331,25 @@ header {
     .card__information-location {
       position: absolute;
       top: 350px; }
+      @media screen and (max-width: 1000px) {
+        .card__information-location {
+          position: absolute;
+          top: 82%; } }
     .card__information-repository {
       position: absolute;
       top: 370px; }
+      @media screen and (max-width: 1000px) {
+        .card__information-repository {
+          position: absolute;
+          top: 85%; } }
     .card__information-dimensions {
       position: absolute;
       top: 410px;
       max-height: 40px;
       overflow: hidden; }
+      @media screen and (max-width: 1000px) {
+        .card__information-dimensions {
+          position: absolute;
+          top: 88%; } }
 
 /*# sourceMappingURL=main.css.map */

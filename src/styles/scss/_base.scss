@@ -64,6 +64,10 @@ body{
 
 main{
   padding-top: 80px;
+
+  @media screen and (max-width: $vp-small) {
+    padding-top: 0px;
+  }
 }
 
 /* Grids
@@ -116,10 +120,6 @@ header{
   overflow: hidden;
 
   @media screen and (max-width: $vp-small) {
-    display: grid;
-    grid-template-rows: repeat(6);
-    place-items: start;
-    grid-gap: $m;
-    overflow: hidden;
+    display:block;
   }
 }
