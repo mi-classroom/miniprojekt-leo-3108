@@ -23,13 +23,37 @@ header{
         justify-content: end;
         direction: rtl;
     }
+
+    @media screen and (max-width: $vp-small) {
+        padding: 20px;
+        align-items: center;
+        justify-content:center;
+        background-color: white;
+        border-bottom: none;
+        position:fixed;
+        z-index: 2;
+        top: 0;
+
+        .logo{
+            grid-column: 1;
+            font-family: Source Sans Pro Bold;
+            font-size: $d-xl;
+        }
+
+        .dropdown {
+            display: none;
+            grid-column: 3;
+            justify-content: end;
+            direction: rtl;
+        }
+    }
 }
 
 .yearindicator {
     justify-content:center;
     align-items: center;
-    margin-top: $d-m;
-    margin-bottom: $d-m;
+    margin-top: $m;
+    margin-bottom: $m;
 
     &__jahreszahl {
         grid-column: 1/3;
@@ -55,44 +79,80 @@ header{
         -ms-user-select: none;
         user-select: none;
     }
+
+    @media screen and (max-width: $vp-small) {
+        background-color: $g6;
+
+        &__jahreszahl {
+            grid-column: 1;
+            grid-row: 1;
+            color: white;;
+            font-family: Source Sans Pro Bold;
+            font-size: $m-xl;
+            justify-content: center;
+        }
+
+        &__linie {
+            display: none;
+        }
+
+        &__button {
+            display: none;
+        }
+    }
 }
 
 .yearindicator__button{
     &-close{
         transform: rotate(180deg);
-        transition: transform 0.5s;
+        transition: transform $tr-medium;
     }
 
     &-open{
         transform: rotate(0deg);
-        transition: transform 0.5s;
+        transition: transform $tr-medium;
     }
 }
 
 .paintinglist{
     justify-content:center;
-    margin-top: $d-m;
-    margin-bottom: $d-m;
+    margin-top: $m;
+    margin-bottom: $m;
 
-    figure{
+    .painting{
         margin: 0;
+        padding: 0;
+        width: $desktop;
+        height: $desktop;
         cursor: pointer;
         img{
             object-fit: cover;
-            width: 140px;
-            height: 140px;
+            width: $desktop;
+            height: $desktop;
+        }
+    }
+
+    @media screen and (max-width: $vp-small) {
+        .painting{
+            margin: 0;
+            width: $mobile;
+            height: $mobile;
+            cursor: pointer;
+            img{
+                object-fit: cover;
+                width: $mobile;
+                height: $mobile;
+            }
         }
     }
 }
 
 .paintinglist{
     &-visible{
-        transition: visibility 0s, opacity 0.5s linear;
         display: '';
     }
 
     &-invisible{
-        transition: width 2s, height 2s, background-color 2s, transform 2s;
         display: none;
     }
 
@@ -151,10 +211,26 @@ header{
         background-color: black;
     }
 
-    .card__button{
+    .card__button-close{
         position: absolute;
-        right: 0;
-        top: 0;
+        right: 10px;
+        top: 10px;
+        cursor: pointer;
+        color: white;
+    }
+
+    .card__button-back{
+        position: absolute;
+        right: 60px;
+        bottom: 10px;
+        cursor: pointer;
+        color: white;
+    }
+
+    .card__button-forward{
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
         cursor: pointer;
         color: white;
     }
@@ -162,6 +238,38 @@ header{
     &-unvisible{
         display: none;
     }
+
+    &__information{
+        grid-column: 4/7;
+        margin-right: $m;
+
+        &-title{
+            max-width: 400px;
+            overflow: hidden;
+        }
+
+        &-description{
+            max-height: 200px;
+            overflow: hidden;
+        }
+
+        &-location{
+            position: absolute;
+            top: 350px;
+        }
+
+        &-repository{
+            position: absolute;
+            top: 370px;
+        }
+
+        &-dimensions{
+            position: absolute;
+            top: 410px;
+            max-height: 40px;
+            overflow: hidden;
+        }
+      }
   }
 
 

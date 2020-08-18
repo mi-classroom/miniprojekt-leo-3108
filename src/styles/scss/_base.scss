@@ -4,31 +4,55 @@
 h1{
   font-family: Source Sans Pro Bold;
   font-size: $d-xxl;
+
+  @media screen and (max-width: $vp-small) {
+    font-size: $m-xxl;
+  }
 }
 
 h2{
   font-family: Source Sans Pro Bold;
   font-size: $d-xl;
+
+  @media screen and (max-width: $vp-small) {
+    font-size: $m-xl;
+  }
 }
 
 h3{
   font-family: Source Sans Pro Bold;
   font-size: $d-l;
+
+  @media screen and (max-width: $vp-small) {
+    font-size: $m-l;
+  }
 }
 
 h4{
   font-family: Source Sans Pro Bold;
   font-size: $d-m;
+
+  @media screen and (max-width: $vp-small) {
+    font-size: $m-m;
+  }
 }
 
 p{
   font-family: Source Sans Pro Normal;
   font-size: $d-m;
+
+  @media screen and (max-width: $vp-small) {
+    font-size: $m-m;
+  }
 }
 
 .id{
   font-family: Source Sans Pro Normal;
   font-size: $d-s;
+
+  @media screen and (max-width: $vp-small) {
+    font-size: $m-s;
+  }
 }
 
 /* Allgemeines
@@ -48,33 +72,54 @@ main{
 header{
   display: grid;
   grid-template-columns: repeat(12, 60px);
-  grid-gap: 20px;
+  grid-gap: $m;
+
+  @media screen and (max-width: $vp-small) {
+    display: grid;
+    grid-template-columns: repeat(3, $mobile);
+    grid-gap: 5px;
+  }
 }
 
 .yearindicator{
   display: grid;
   grid-template-columns: repeat(12, 60px);
-  grid-gap: 20px;
+  grid-gap: $m;
+
+  @media screen and (max-width: $vp-small) {
+    display: grid;
+    grid-template-columns: repeat(3, $mobile);
+    grid-gap: 5px;
+  }
 }
 
 .paintinglist{
   display: grid;
-  grid-template-columns: repeat(6, 140px);
+  grid-template-columns: repeat(6, $desktop);
   place-items: start;
-  grid-gap: 20px;
+  grid-gap: $m;
+
+  @media screen and (max-width: $vp-small) {
+    display: grid;
+    grid-template-columns: repeat(3, $mobile);
+    place-items: start;
+    grid-gap: 2px;
+  }
 }
 
 .card{
   display: grid;
-  grid-template-columns: repeat(6, 140px);
+  grid-template-columns: repeat(6, $desktop);
+  grid-template-rows: 2;
   place-items: start;
-  grid-gap: 20px;
+  grid-gap: $m;
   overflow: hidden;
 
-  &__information-flex{
-    grid-column: 4/7;
-    display: flex;
-    flex-direction: column;
-    margin-right: 20px;
+  @media screen and (max-width: $vp-small) {
+    display: grid;
+    grid-template-rows: repeat(6);
+    place-items: start;
+    grid-gap: $m;
+    overflow: hidden;
   }
 }
