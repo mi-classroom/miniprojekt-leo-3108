@@ -57,14 +57,17 @@ async function generateCard(paintingid, data, reihenfolge, indicator) {
   const buttonforward = card.querySelector('.card__button-forward');
 
   buttonback.addEventListener('click', () => {
-    console.log('back');
-    card.className = `card__${paintingid} card-unvisible`;
-    card.innerHTML = '';
-    const newID = reihenfolge[indicator - 1];
-    console.log(newID);
-    const newcard = document.querySelector(`.card__${newID}`);
-    newcard.className = `card__${newID} card`;
-    generateCard(reihenfolge[indicator - 1], data, reihenfolge, indicator - 1);
+    if (indicator - 1 !== -1) {
+      console.log('back');
+      card.className = `card__${paintingid} card-unvisible`;
+      card.innerHTML = '';
+      const newID = reihenfolge[indicator - 1];
+      console.log(newID);
+      const newcard = document.querySelector(`.card__${newID}`);
+      newcard.className = `card__${newID} card`;
+      generateCard(reihenfolge[indicator - 1],
+        data, reihenfolge, indicator - 1);
+    }
   });
 
   buttonforward.addEventListener('click', () => {
@@ -136,13 +139,16 @@ async function addoverlay(data) {
       }
 
       buttonback.addEventListener('click', () => {
-        console.log('back');
-        card.className = `card__${paintingid} card-unvisible`;
-        card.innerHTML = '';
-        const newcard = document.querySelector(`.card__${reihenfolge[indicator - 1]}`);
-        newcard.className = `card__${reihenfolge[indicator - 1]} card`;
-        console.log(reihenfolge[indicator - 1]);
-        generateCard(reihenfolge[indicator - 1], data, reihenfolge, indicator - 1);
+        if (indicator - 1 !== -1) {
+          console.log('back');
+          card.className = `card__${paintingid} card-unvisible`;
+          card.innerHTML = '';
+          const newcard = document.querySelector(`.card__${reihenfolge[indicator - 1]}`);
+          newcard.className = `card__${reihenfolge[indicator - 1]} card`;
+          console.log(reihenfolge[indicator - 1]);
+          generateCard(reihenfolge[indicator - 1],
+            data, reihenfolge, indicator - 1);
+        }
       });
 
       buttonforward.addEventListener('click', () => {
@@ -165,6 +171,23 @@ async function addpaintings(data) {
   console.log(data);
 
   const paintingsTemplate = await fetchData('./templates/painting.html', false);
+  let listesortiert = [];
+  const zuordnung = [];
+
+  data.forEach((element) => {
+    listesortiert.push(element.dating.begin);
+  });
+
+  listesortiert.sort();
+  listesortiert = listesortiert.filter((elem, index, self) => index === self.indexOf(elem));
+
+  listesortiert.forEach((element) => {
+    const neweintrag = {
+      jahr: element,
+      bilder: [],
+    };
+    zuordnung.push(neweintrag);
+  });
 
   data.forEach((element) => {
     const jahr = element.dating.begin;
@@ -177,37 +200,28 @@ async function addpaintings(data) {
 
       const mustacheElement = document.querySelector(`.paintinglist__${jahr}`);
 
-      const renderedSection = Mustache.render(paintingsTemplate, { link, id, title });
+      const renderedSection = Mustache.render(paintingsTemplate, {
+        link, id, title, jahr,
+      });
       mustacheElement.innerHTML += renderedSection;
+
+      zuordnung.forEach((item) => {
+        if (item.jahr === jahr) {
+          item.bilder.push(id);
+        }
+      });
     }
   });
 
-  // löscht Bilder, welche nicht geladen wurden
+  // Ersetzt Bilder, welche nicht geladen wurden
   document.querySelectorAll('.painting').forEach((painting) => {
     img = painting.querySelector('img');
     img.onerror = function () {
-      const id = painting.className.replace(/[^0-9.]/g, '');
-      painting.outerHTML = '';
-      const card = document.querySelector(`.card__${id}`);
-      card.outerHTML = '';
+      painting.innerHTML = ' <img src="http://lucascranach.org/imageserver/DE_AGGD_440_FR-none/pyramid/DE_AGGD_440_FR-none_2011_Overall-m.jpg" alt="nicht verfügbar">';
     };
   });
 
-  /*   const test = document.querySelector('.paintinglist__1540');
-  console.log(typeof (test.innerHTML.length));
-  if (typeof (test.innerHTML).length === 'number') {
-    console.log('ghjkj');
-  } */
-
-  document.querySelectorAll('.paintinglist').forEach((paintinglist) => {
-    // console.log((paintinglist.innerHTML.length));
-    if ((paintinglist.innerHTML).length === 0 || (paintinglist.innerHTML).length === 1
-      || (paintinglist.innerHTML).length === 'number') {
-      const year = paintinglist.className.replace(/[^0-9.]/g, '');
-      const yearindicator = document.querySelector(`.yearindicator__${year}`);
-      yearindicator.style.display = 'none';
-    }
-  });
+  console.log(zuordnung);
   addoverlay(data);
 }
 
@@ -225,6 +239,7 @@ async function main() {
   DataEn = DataEn.items;
 
   let Data = DataDe;
+
   addpaintings(Data);
 
   // Switch Langauge

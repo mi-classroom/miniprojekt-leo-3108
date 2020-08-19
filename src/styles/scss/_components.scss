@@ -285,6 +285,7 @@ header{
         }
 
         &-location{
+            margin-right: $m;
             position: absolute;
             top: 350px;
 
@@ -295,6 +296,7 @@ header{
         }
 
         &-repository{
+            margin-right: $m;
             position: absolute;
             top: 370px;
 
@@ -305,6 +307,7 @@ header{
         }
 
         &-dimensions{
+            margin-right: $m;
             position: absolute;
             top: 410px;
             max-height: 40px;

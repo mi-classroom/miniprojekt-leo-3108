@@ -73,7 +73,8 @@ main {
   padding-top: 80px; }
   @media screen and (max-width: 1000px) {
     main {
-      padding-top: 0px; } }
+      padding-top: 0px;
+      padding-bottom: 80px; } }
 
 /* Grids
 ############################################################################ */
@@ -329,6 +330,7 @@ header {
       max-height: 200px;
       overflow: hidden; }
     .card__information-location {
+      margin-right: 20px;
       position: absolute;
       top: 350px; }
       @media screen and (max-width: 1000px) {
@@ -336,6 +338,7 @@ header {
           position: absolute;
           top: 82%; } }
     .card__information-repository {
+      margin-right: 20px;
       position: absolute;
       top: 370px; }
       @media screen and (max-width: 1000px) {
@@ -343,6 +346,7 @@ header {
           position: absolute;
           top: 85%; } }
     .card__information-dimensions {
+      margin-right: 20px;
       position: absolute;
       top: 410px;
       max-height: 40px;
