@@ -12,7 +12,9 @@ async function fetchData(apiURL, parseJSON = true) {
   return data;
 }
 
-// Overlay
+/*
+Overlay mit Karte
+ */
 
 async function generateCard(paintingid, data, reihenfolge, indicator) {
   const card = document.querySelector(`.card__${paintingid}`);
@@ -58,11 +60,9 @@ async function generateCard(paintingid, data, reihenfolge, indicator) {
 
   buttonback.addEventListener('click', () => {
     if (indicator - 1 !== -1) {
-      console.log('back');
       card.className = `card__${paintingid} card-unvisible`;
       card.innerHTML = '';
       const newID = reihenfolge[indicator - 1];
-      console.log(newID);
       const newcard = document.querySelector(`.card__${newID}`);
       newcard.className = `card__${newID} card`;
       generateCard(reihenfolge[indicator - 1],
@@ -71,10 +71,8 @@ async function generateCard(paintingid, data, reihenfolge, indicator) {
   });
 
   buttonforward.addEventListener('click', () => {
-    console.log('forward');
     card.className = `card__${paintingid} card-unvisible`;
     card.innerHTML = '';
-    console.log(reihenfolge[indicator + 1]);
     const newcard = document.querySelector(`.card__${reihenfolge[indicator + 1]}`);
     newcard.className = `card__${reihenfolge[indicator + 1]} card`;
     generateCard(reihenfolge[indicator + 1], data, reihenfolge, indicator + 1);
@@ -140,54 +138,34 @@ async function addoverlay(data) {
 
       buttonback.addEventListener('click', () => {
         if (indicator - 1 !== -1) {
-          console.log('back');
           card.className = `card__${paintingid} card-unvisible`;
           card.innerHTML = '';
           const newcard = document.querySelector(`.card__${reihenfolge[indicator - 1]}`);
           newcard.className = `card__${reihenfolge[indicator - 1]} card`;
-          console.log(reihenfolge[indicator - 1]);
           generateCard(reihenfolge[indicator - 1],
             data, reihenfolge, indicator - 1);
         }
       });
 
       buttonforward.addEventListener('click', () => {
-        console.log('forward');
         card.className = `card__${paintingid} card-unvisible`;
         card.innerHTML = '';
         const newcard = document.querySelector(`.card__${reihenfolge[indicator + 1]}`);
         newcard.className = `card__${reihenfolge[indicator + 1]} card`;
-        console.log(reihenfolge[indicator + 1]);
         generateCard(reihenfolge[indicator + 1], data, reihenfolge, indicator + 1);
       });
     });
   });
-  console.log(reihenfolge);
 }
 
-// Fügt die einzelnen Bilder hinzu
+/*
+Bilder werden in die Struktur eingefügt
+ */
 
 async function addpaintings(data) {
   console.log(data);
 
   const paintingsTemplate = await fetchData('./templates/painting.html', false);
-  let listesortiert = [];
-  const zuordnung = [];
-
-  data.forEach((element) => {
-    listesortiert.push(element.dating.begin);
-  });
-
-  listesortiert.sort();
-  listesortiert = listesortiert.filter((elem, index, self) => index === self.indexOf(elem));
-
-  listesortiert.forEach((element) => {
-    const neweintrag = {
-      jahr: element,
-      bilder: [],
-    };
-    zuordnung.push(neweintrag);
-  });
 
   data.forEach((element) => {
     const jahr = element.dating.begin;
@@ -204,12 +182,6 @@ async function addpaintings(data) {
         link, id, title, jahr,
       });
       mustacheElement.innerHTML += renderedSection;
-
-      zuordnung.forEach((item) => {
-        if (item.jahr === jahr) {
-          item.bilder.push(id);
-        }
-      });
     }
   });
 
@@ -221,9 +193,12 @@ async function addpaintings(data) {
     };
   });
 
-  console.log(zuordnung);
   addoverlay(data);
 }
+
+/*
+Main-Funktion mit Sprachen-Wechsler
+ */
 
 function removepaintings() {
   const tmp = document.querySelectorAll('.paintinglist');

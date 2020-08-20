@@ -91,6 +91,12 @@ header{
   grid-template-columns: repeat(12, 60px);
   grid-gap: $m;
 
+  &__counter {
+    display: grid;
+    grid-template-columns: repeat(4, 30px);
+    grid-gap: $s;
+  }
+
   @media screen and (max-width: $vp-small) {
     display: grid;
     grid-template-columns: repeat(3, $mobile);

@@ -12,7 +12,9 @@ async function fetchData(apiURL, parseJSON = true) {
   return data;
 }
 
-// Accordeon
+/*
+Accordeon
+ */
 
 function togglevisibility(year) {
   const paintinglist = document.querySelector(`.paintinglist__${year}`);
@@ -28,7 +30,7 @@ function togglevisibility(year) {
 }
 
 function accordeon() {
-  const yearindicatorButtons = document.querySelectorAll('.yearindicator__button');
+  const yearindicatorButtons = document.querySelectorAll('.yearindicator');
 
   yearindicatorButtons.forEach((button) => {
     button.addEventListener('click', (event) => {
@@ -39,7 +41,9 @@ function accordeon() {
   });
 }
 
-// Erstellt die Jahres-Teilbereiche
+/*
+Erstellt die Grundstruktur mit den Jahres-Teilbereichen
+ */
 
 async function main() {
   let DataDe = await fetchData('./data/json/cda-paintings-v2.de.json');
@@ -59,12 +63,45 @@ async function main() {
     year[i] = { year: year[i] };
   }
 
+  let listesortiert = [];
+  const zuordnung = [];
+
+  DataDe.forEach((element) => {
+    listesortiert.push(element.dating.begin);
+  });
+
+  listesortiert.sort();
+  listesortiert = listesortiert.filter((elem, index, self) => index === self.indexOf(elem));
+
+  listesortiert.forEach((element) => {
+    const neweintrag = {
+      jahr: element,
+      bildercounter: 0,
+    };
+    zuordnung.push(neweintrag);
+  });
+
+  DataDe.forEach((element) => {
+    const jahr = element.dating.begin;
+
+    zuordnung.forEach((item) => {
+      if (item.jahr === jahr) {
+        item.bildercounter += 1;
+      }
+    });
+  });
+
   const mustacheElement = document.querySelector('main');
 
   const yearTemplate = await fetchData('./templates/basicstructure.html', false);
 
-  const renderedSection = Mustache.render(yearTemplate, { year });
-  mustacheElement.innerHTML = renderedSection;
+  zuordnung.forEach((element) => {
+    const renderedSection = Mustache.render(yearTemplate, {
+      year: element.jahr,
+      counter: element.bildercounter,
+    });
+    mustacheElement.innerHTML += renderedSection;
+  });
   accordeon();
 }
 
