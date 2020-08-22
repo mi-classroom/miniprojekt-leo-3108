@@ -94,8 +94,10 @@ async function addoverlay(data) {
       let elementdata;
 
       for (let i = 0; i < data.length; i++) {
-        if (data[i].objectId === paintingid) {
-          elementdata = data[i];
+        if (data[i] !== undefined) {
+          if (data[i].objectId === paintingid) {
+            elementdata = data[i];
+          }
         }
       }
 
@@ -230,6 +232,16 @@ async function main() {
     const language = document.querySelector('select').value;
     if (language === 'de') Data = DataDe;
     if (language === 'en') Data = DataEn;
+
+    for (let i = 0; i < Data.length; i++) {
+      if (Data[i] !== undefined) {
+        if (Data[i].images !== null && (Data[i].images.infos.maxDimensions.height === 0
+        || Data[i].images.infos.maxDimensions.width === 0)) {
+          delete Data[i];
+        }
+      }
+    }
+
     removepaintings();
     addpaintings(Data);
   };
