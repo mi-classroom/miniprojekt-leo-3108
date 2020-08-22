@@ -49,18 +49,11 @@ async function main() {
   let DataDe = await fetchData('./data/json/cda-paintings-v2.de.json');
   DataDe = DataDe.items;
 
-  let year = [];
-
-  DataDe.forEach((bild) => {
-    const tmp = bild.dating.begin;
-    year.push(tmp);
-  });
-
-  year.sort();
-  year = year.filter((elem, index, self) => index === self.indexOf(elem));
-
-  for (let i = 0; i < year.length; i += 1) {
-    year[i] = { year: year[i] };
+  for (let i = 0; i < DataDe.length; i++) {
+    if (DataDe[i].images !== null && (DataDe[i].images.infos.maxDimensions.height === 0
+      || DataDe[i].images.infos.maxDimensions.width === 0)) {
+      delete DataDe[i];
+    }
   }
 
   let listesortiert = [];

@@ -215,6 +215,13 @@ async function main() {
 
   let Data = DataDe;
 
+  for (let i = 0; i < Data.length; i++) {
+    if (Data[i].images !== null && (Data[i].images.infos.maxDimensions.height === 0
+      || Data[i].images.infos.maxDimensions.width === 0)) {
+      delete Data[i];
+    }
+  }
+
   addpaintings(Data);
 
   // Switch Langauge
