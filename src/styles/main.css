@@ -82,11 +82,19 @@ header {
   display: grid;
   grid-template-columns: repeat(12, 60px);
   grid-gap: 20px; }
-  @media screen and (max-width: 1000px) {
-    header {
+
+footer {
+  display: none; }
+  @media screen and (max-width: 600px) {
+    footer {
       display: grid;
-      grid-template-columns: repeat(3, 120px);
-      grid-gap: 5px; } }
+      grid-template-columns: repeat(3, 33%);
+      grid-gap: 2px; } }
+  @media screen and (max-width: 1000px) {
+    footer {
+      display: grid;
+      grid-template-columns: repeat(4, 25%);
+      grid-gap: 2px; } }
 
 .yearindicator {
   display: grid;
@@ -99,8 +107,15 @@ header {
   @media screen and (max-width: 1000px) {
     .yearindicator {
       display: grid;
-      grid-template-columns: repeat(3, 120px);
-      grid-gap: 5px; } }
+      grid-template-columns: repeat(4, 25%);
+      grid-gap: 5px;
+      justify-items: center; } }
+  @media screen and (max-width: 600px) {
+    .yearindicator {
+      display: grid;
+      grid-template-columns: repeat(3, 33%);
+      grid-gap: 5px;
+      justify-items: center; } }
 
 .paintinglist {
   display: grid;
@@ -110,7 +125,13 @@ header {
   @media screen and (max-width: 1000px) {
     .paintinglist {
       display: grid;
-      grid-template-columns: repeat(3, 120px);
+      grid-template-columns: repeat(4, 25%);
+      place-items: start;
+      grid-gap: 2px; } }
+  @media screen and (max-width: 600px) {
+    .paintinglist {
+      display: grid;
+      grid-template-columns: repeat(3, 33%);
       place-items: start;
       grid-gap: 2px; } }
 
@@ -148,30 +169,41 @@ header {
     direction: rtl; }
   @media screen and (max-width: 1000px) {
     header {
-      padding: 20px;
-      align-items: center;
-      justify-content: center;
-      background-color: white;
-      border-bottom: none;
-      position: fixed;
-      z-index: 2;
-      bottom: 0;
-      top: 94%; }
-      header .logo {
-        grid-column: 1;
-        font-family: Source Sans Pro Bold;
-        font-size: 31.5px; }
-      header .dropdown {
-        display: none;
-        grid-column: 3;
-        justify-content: end;
-        direction: rtl; } }
+      display: none; } }
+
+footer {
+  padding: 20px;
+  background-color: white;
+  width: 100%;
+  height: 40px;
+  position: fixed;
+  z-index: 2;
+  bottom: 0;
+  left: 0; }
+  footer .logo-bot {
+    display: inline;
+    grid-column: 1;
+    font-family: Source Sans Pro Bold;
+    font-size: 31.5px; }
+  footer .button-bot {
+    display: inline;
+    grid-column: 3;
+    justify-self: center;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    user-select: none; }
+    @media screen and (max-width: 1000px) {
+      footer .button-bot {
+        grid-column: 4; } }
 
 .yearindicator {
   justify-content: center;
   align-items: center;
   margin-top: 20px;
   margin-bottom: 20px;
+  width: 100%;
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: -moz-none;
@@ -221,10 +253,17 @@ header {
         font-family: Source Sans Pro Bold;
         font-size: 31.5px;
         justify-content: center; }
-      .yearindicator__linie {
+      .yearindicator__linie-1 {
+        display: none; }
+      .yearindicator__linie-2 {
         display: none; }
       .yearindicator__button {
-        display: none; } }
+        display: none; }
+      .yearindicator__counter {
+        grid-column: 4; } }
+    @media screen and (max-width: 1000px) and (max-width: 600px) {
+      .yearindicator__counter {
+        grid-column: 3; } }
 
 .yearindicator__button-close {
   transform: rotate(180deg);
@@ -252,13 +291,12 @@ header {
     .paintinglist {
       margin: 0; }
       .paintinglist .painting {
-        width: 120px;
-        height: 120px;
+        width: 100%;
         cursor: pointer; }
         .paintinglist .painting img {
           object-fit: cover;
-          width: 120px;
-          height: 120px; } }
+          width: 100%;
+          height: 100%; } }
 
 .paintinglist-visible {
   display: ''; }

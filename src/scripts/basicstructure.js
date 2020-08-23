@@ -29,7 +29,7 @@ function togglevisibility(year) {
   }
 }
 
-function accordeon() {
+function accordeon(listesortiert) {
   const yearindicatorButtons = document.querySelectorAll('.yearindicator');
 
   yearindicatorButtons.forEach((button) => {
@@ -37,6 +37,13 @@ function accordeon() {
       const buttonname = button.className;
       const year = parseInt(buttonname.replace(/[^0-9\.]/g, ''), 10);
       togglevisibility(year);
+    });
+  });
+
+  const buttonbot = document.querySelector('.button-bot');
+  buttonbot.addEventListener('click', (event) => {
+    listesortiert.forEach((jahr) => {
+      togglevisibility(jahr);
     });
   });
 }
@@ -95,7 +102,7 @@ async function main() {
     });
     mustacheElement.innerHTML += renderedSection;
   });
-  accordeon();
+  accordeon(listesortiert);
 }
 
 main();

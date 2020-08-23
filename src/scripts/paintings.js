@@ -71,11 +71,13 @@ async function generateCard(paintingid, data, reihenfolge, indicator) {
   });
 
   buttonforward.addEventListener('click', () => {
-    card.className = `card__${paintingid} card-unvisible`;
-    card.innerHTML = '';
-    const newcard = document.querySelector(`.card__${reihenfolge[indicator + 1]}`);
-    newcard.className = `card__${reihenfolge[indicator + 1]} card`;
-    generateCard(reihenfolge[indicator + 1], data, reihenfolge, indicator + 1);
+    if (indicator + 1 !== reihenfolge.length) {
+      card.className = `card__${paintingid} card-unvisible`;
+      card.innerHTML = '';
+      const newcard = document.querySelector(`.card__${reihenfolge[indicator + 1]}`);
+      newcard.className = `card__${reihenfolge[indicator + 1]} card`;
+      generateCard(reihenfolge[indicator + 1], data, reihenfolge, indicator + 1);
+    }
   });
 }
 
@@ -150,11 +152,13 @@ async function addoverlay(data) {
       });
 
       buttonforward.addEventListener('click', () => {
-        card.className = `card__${paintingid} card-unvisible`;
-        card.innerHTML = '';
-        const newcard = document.querySelector(`.card__${reihenfolge[indicator + 1]}`);
-        newcard.className = `card__${reihenfolge[indicator + 1]} card`;
-        generateCard(reihenfolge[indicator + 1], data, reihenfolge, indicator + 1);
+        if (indicator + 1 !== reihenfolge.length) {
+          card.className = `card__${paintingid} card-unvisible`;
+          card.innerHTML = '';
+          const newcard = document.querySelector(`.card__${reihenfolge[indicator + 1]}`);
+          newcard.className = `card__${reihenfolge[indicator + 1]} card`;
+          generateCard(reihenfolge[indicator + 1], data, reihenfolge, indicator + 1);
+        }
       });
     });
   });

@@ -5,7 +5,7 @@ h1{
   font-family: Source Sans Pro Bold;
   font-size: $d-xxl;
 
-  @media screen and (max-width: $vp-small) {
+  @media screen and (max-width: $vp-medium) {
     font-size: $m-xxl;
   }
 }
@@ -14,7 +14,7 @@ h2{
   font-family: Source Sans Pro Bold;
   font-size: $d-xl;
 
-  @media screen and (max-width: $vp-small) {
+  @media screen and (max-width: $vp-medium) {
     font-size: $m-xl;
   }
 }
@@ -23,7 +23,7 @@ h3{
   font-family: Source Sans Pro Bold;
   font-size: $d-l;
 
-  @media screen and (max-width: $vp-small) {
+  @media screen and (max-width: $vp-medium) {
     font-size: $m-l;
   }
 }
@@ -32,7 +32,7 @@ h4{
   font-family: Source Sans Pro Bold;
   font-size: $d-m;
 
-  @media screen and (max-width: $vp-small) {
+  @media screen and (max-width: $vp-medium) {
     font-size: $m-m;
   }
 }
@@ -41,7 +41,7 @@ p{
   font-family: Source Sans Pro Normal;
   font-size: $d-m;
 
-  @media screen and (max-width: $vp-small) {
+  @media screen and (max-width: $vp-medium) {
     font-size: $m-m;
   }
 }
@@ -50,7 +50,7 @@ p{
   font-family: Source Sans Pro Normal;
   font-size: $d-s;
 
-  @media screen and (max-width: $vp-small) {
+  @media screen and (max-width: $vp-medium) {
     font-size: $m-s;
   }
 }
@@ -65,7 +65,7 @@ body{
 main{
   padding-top: 80px;
 
-  @media screen and (max-width: $vp-small) {
+  @media screen and (max-width: $vp-medium) {
     padding-top: 0px;
     padding-bottom: 80px;
   }
@@ -78,11 +78,21 @@ header{
   display: grid;
   grid-template-columns: repeat(12, 60px);
   grid-gap: $m;
+}
+
+footer{
+  display: none;
 
   @media screen and (max-width: $vp-small) {
     display: grid;
-    grid-template-columns: repeat(3, $mobile);
-    grid-gap: 5px;
+    grid-template-columns: repeat(3, 33%);
+    grid-gap: 2px;
+  }
+
+  @media screen and (max-width: $vp-medium) {
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    grid-gap: 2px;
   }
 }
 
@@ -97,10 +107,18 @@ header{
     grid-gap: $s;
   }
 
+  @media screen and (max-width: $vp-medium) {
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    grid-gap: 5px;
+    justify-items: center;
+  }
+
   @media screen and (max-width: $vp-small) {
     display: grid;
-    grid-template-columns: repeat(3, $mobile);
+    grid-template-columns: repeat(3, 33%);
     grid-gap: 5px;
+    justify-items: center;
   }
 }
 
@@ -110,9 +128,16 @@ header{
   place-items: start;
   grid-gap: $m;
 
+  @media screen and (max-width: $vp-medium) {
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    place-items: start;
+    grid-gap: 2px;
+  }
+
   @media screen and (max-width: $vp-small) {
     display: grid;
-    grid-template-columns: repeat(3, $mobile);
+    grid-template-columns: repeat(3, 33%);
     place-items: start;
     grid-gap: 2px;
   }
@@ -126,7 +151,7 @@ header{
   grid-gap: $m;
   overflow: hidden;
 
-  @media screen and (max-width: $vp-small) {
+  @media screen and (max-width: $vp-medium) {
     display:block;
   }
 }

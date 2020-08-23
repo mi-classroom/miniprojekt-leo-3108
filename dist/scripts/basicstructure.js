@@ -12,7 +12,9 @@ async function fetchData(apiURL, parseJSON = true) {
   return data;
 }
 
-// Accordeon
+/*
+Accordeon
+ */
 
 function togglevisibility(year) {
   const paintinglist = document.querySelector(`.paintinglist__${year}`);
@@ -27,8 +29,8 @@ function togglevisibility(year) {
   }
 }
 
-function accordeon() {
-  const yearindicatorButtons = document.querySelectorAll('.yearindicator__button');
+function accordeon(listesortiert) {
+  const yearindicatorButtons = document.querySelectorAll('.yearindicator');
 
   yearindicatorButtons.forEach((button) => {
     button.addEventListener('click', (event) => {
@@ -37,35 +39,70 @@ function accordeon() {
       togglevisibility(year);
     });
   });
+
+  const buttonbot = document.querySelector('.button-bot');
+  buttonbot.addEventListener('click', (event) => {
+    listesortiert.forEach((jahr) => {
+      togglevisibility(jahr);
+    });
+  });
 }
 
-// Erstellt die Jahres-Teilbereiche
+/*
+Erstellt die Grundstruktur mit den Jahres-Teilbereichen
+ */
 
 async function main() {
   let DataDe = await fetchData('./data/json/cda-paintings-v2.de.json');
   DataDe = DataDe.items;
 
-  let year = [];
+  for (let i = 0; i < DataDe.length; i++) {
+    if (DataDe[i].images !== null && (DataDe[i].images.infos.maxDimensions.height === 0
+      || DataDe[i].images.infos.maxDimensions.width === 0)) {
+      delete DataDe[i];
+    }
+  }
 
-  DataDe.forEach((bild) => {
-    const tmp = bild.dating.begin;
-    year.push(tmp);
+  let listesortiert = [];
+  const zuordnung = [];
+
+  DataDe.forEach((element) => {
+    listesortiert.push(element.dating.begin);
   });
 
-  year.sort();
-  year = year.filter((elem, index, self) => index === self.indexOf(elem));
+  listesortiert.sort();
+  listesortiert = listesortiert.filter((elem, index, self) => index === self.indexOf(elem));
 
-  for (let i = 0; i < year.length; i += 1) {
-    year[i] = { year: year[i] };
-  }
+  listesortiert.forEach((element) => {
+    const neweintrag = {
+      jahr: element,
+      bildercounter: 0,
+    };
+    zuordnung.push(neweintrag);
+  });
+
+  DataDe.forEach((element) => {
+    const jahr = element.dating.begin;
+
+    zuordnung.forEach((item) => {
+      if (item.jahr === jahr) {
+        item.bildercounter += 1;
+      }
+    });
+  });
 
   const mustacheElement = document.querySelector('main');
 
   const yearTemplate = await fetchData('./templates/basicstructure.html', false);
 
-  const renderedSection = Mustache.render(yearTemplate, { year });
-  mustacheElement.innerHTML = renderedSection;
-  accordeon();
+  zuordnung.forEach((element) => {
+    const renderedSection = Mustache.render(yearTemplate, {
+      year: element.jahr,
+      counter: element.bildercounter,
+    });
+    mustacheElement.innerHTML += renderedSection;
+  });
+  accordeon(listesortiert);
 }
 
 main();

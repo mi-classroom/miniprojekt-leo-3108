@@ -12,7 +12,9 @@ async function fetchData(apiURL, parseJSON = true) {
   return data;
 }
 
-// Overlay
+/*
+Overlay mit Karte
+ */
 
 async function generateCard(paintingid, data, reihenfolge, indicator) {
   const card = document.querySelector(`.card__${paintingid}`);
@@ -57,24 +59,25 @@ async function generateCard(paintingid, data, reihenfolge, indicator) {
   const buttonforward = card.querySelector('.card__button-forward');
 
   buttonback.addEventListener('click', () => {
-    console.log('back');
-    card.className = `card__${paintingid} card-unvisible`;
-    card.innerHTML = '';
-    const newID = reihenfolge[indicator - 1];
-    console.log(newID);
-    const newcard = document.querySelector(`.card__${newID}`);
-    newcard.className = `card__${newID} card`;
-    generateCard(reihenfolge[indicator - 1], data, reihenfolge, indicator - 1);
+    if (indicator - 1 !== -1) {
+      card.className = `card__${paintingid} card-unvisible`;
+      card.innerHTML = '';
+      const newID = reihenfolge[indicator - 1];
+      const newcard = document.querySelector(`.card__${newID}`);
+      newcard.className = `card__${newID} card`;
+      generateCard(reihenfolge[indicator - 1],
+        data, reihenfolge, indicator - 1);
+    }
   });
 
   buttonforward.addEventListener('click', () => {
-    console.log('forward');
-    card.className = `card__${paintingid} card-unvisible`;
-    card.innerHTML = '';
-    console.log(reihenfolge[indicator + 1]);
-    const newcard = document.querySelector(`.card__${reihenfolge[indicator + 1]}`);
-    newcard.className = `card__${reihenfolge[indicator + 1]} card`;
-    generateCard(reihenfolge[indicator + 1], data, reihenfolge, indicator + 1);
+    if (indicator + 1 !== reihenfolge.length) {
+      card.className = `card__${paintingid} card-unvisible`;
+      card.innerHTML = '';
+      const newcard = document.querySelector(`.card__${reihenfolge[indicator + 1]}`);
+      newcard.className = `card__${reihenfolge[indicator + 1]} card`;
+      generateCard(reihenfolge[indicator + 1], data, reihenfolge, indicator + 1);
+    }
   });
 }
 
@@ -93,8 +96,10 @@ async function addoverlay(data) {
       let elementdata;
 
       for (let i = 0; i < data.length; i++) {
-        if (data[i].objectId === paintingid) {
-          elementdata = data[i];
+        if (data[i] !== undefined) {
+          if (data[i].objectId === paintingid) {
+            elementdata = data[i];
+          }
         }
       }
 
@@ -136,30 +141,32 @@ async function addoverlay(data) {
       }
 
       buttonback.addEventListener('click', () => {
-        console.log('back');
-        card.className = `card__${paintingid} card-unvisible`;
-        card.innerHTML = '';
-        const newcard = document.querySelector(`.card__${reihenfolge[indicator - 1]}`);
-        newcard.className = `card__${reihenfolge[indicator - 1]} card`;
-        console.log(reihenfolge[indicator - 1]);
-        generateCard(reihenfolge[indicator - 1], data, reihenfolge, indicator - 1);
+        if (indicator - 1 !== -1) {
+          card.className = `card__${paintingid} card-unvisible`;
+          card.innerHTML = '';
+          const newcard = document.querySelector(`.card__${reihenfolge[indicator - 1]}`);
+          newcard.className = `card__${reihenfolge[indicator - 1]} card`;
+          generateCard(reihenfolge[indicator - 1],
+            data, reihenfolge, indicator - 1);
+        }
       });
 
       buttonforward.addEventListener('click', () => {
-        console.log('forward');
-        card.className = `card__${paintingid} card-unvisible`;
-        card.innerHTML = '';
-        const newcard = document.querySelector(`.card__${reihenfolge[indicator + 1]}`);
-        newcard.className = `card__${reihenfolge[indicator + 1]} card`;
-        console.log(reihenfolge[indicator + 1]);
-        generateCard(reihenfolge[indicator + 1], data, reihenfolge, indicator + 1);
+        if (indicator + 1 !== reihenfolge.length) {
+          card.className = `card__${paintingid} card-unvisible`;
+          card.innerHTML = '';
+          const newcard = document.querySelector(`.card__${reihenfolge[indicator + 1]}`);
+          newcard.className = `card__${reihenfolge[indicator + 1]} card`;
+          generateCard(reihenfolge[indicator + 1], data, reihenfolge, indicator + 1);
+        }
       });
     });
   });
-  console.log(reihenfolge);
 }
 
-// Fügt die einzelnen Bilder hinzu
+/*
+Bilder werden in die Struktur eingefügt
+ */
 
 async function addpaintings(data) {
   console.log(data);
@@ -177,39 +184,27 @@ async function addpaintings(data) {
 
       const mustacheElement = document.querySelector(`.paintinglist__${jahr}`);
 
-      const renderedSection = Mustache.render(paintingsTemplate, { link, id, title });
+      const renderedSection = Mustache.render(paintingsTemplate, {
+        link, id, title, jahr,
+      });
       mustacheElement.innerHTML += renderedSection;
     }
   });
 
-  // löscht Bilder, welche nicht geladen wurden
+  // Ersetzt Bilder, welche nicht geladen wurden
   document.querySelectorAll('.painting').forEach((painting) => {
     img = painting.querySelector('img');
     img.onerror = function () {
-      const id = painting.className.replace(/[^0-9.]/g, '');
-      painting.outerHTML = '';
-      const card = document.querySelector(`.card__${id}`);
-      card.outerHTML = '';
+      painting.innerHTML = ' <img src="http://lucascranach.org/imageserver/DE_AGGD_440_FR-none/pyramid/DE_AGGD_440_FR-none_2011_Overall-m.jpg" alt="nicht verfügbar">';
     };
   });
 
-  /*   const test = document.querySelector('.paintinglist__1540');
-  console.log(typeof (test.innerHTML.length));
-  if (typeof (test.innerHTML).length === 'number') {
-    console.log('ghjkj');
-  } */
-
-  document.querySelectorAll('.paintinglist').forEach((paintinglist) => {
-    // console.log((paintinglist.innerHTML.length));
-    if ((paintinglist.innerHTML).length === 0 || (paintinglist.innerHTML).length === 1
-      || (paintinglist.innerHTML).length === 'number') {
-      const year = paintinglist.className.replace(/[^0-9.]/g, '');
-      const yearindicator = document.querySelector(`.yearindicator__${year}`);
-      yearindicator.style.display = 'none';
-    }
-  });
   addoverlay(data);
 }
+
+/*
+Main-Funktion mit Sprachen-Wechsler
+ */
 
 function removepaintings() {
   const tmp = document.querySelectorAll('.paintinglist');
@@ -225,6 +220,14 @@ async function main() {
   DataEn = DataEn.items;
 
   let Data = DataDe;
+
+  for (let i = 0; i < Data.length; i++) {
+    if (Data[i].images !== null && (Data[i].images.infos.maxDimensions.height === 0
+      || Data[i].images.infos.maxDimensions.width === 0)) {
+      delete Data[i];
+    }
+  }
+
   addpaintings(Data);
 
   // Switch Langauge
@@ -233,6 +236,16 @@ async function main() {
     const language = document.querySelector('select').value;
     if (language === 'de') Data = DataDe;
     if (language === 'en') Data = DataEn;
+
+    for (let i = 0; i < Data.length; i++) {
+      if (Data[i] !== undefined) {
+        if (Data[i].images !== null && (Data[i].images.infos.maxDimensions.height === 0
+        || Data[i].images.infos.maxDimensions.width === 0)) {
+          delete Data[i];
+        }
+      }
+    }
+
     removepaintings();
     addpaintings(Data);
   };
