@@ -60,6 +60,7 @@ p{
 
 body{
   margin: 0;
+  padding: 0;
 }
 
 main{
@@ -110,14 +111,14 @@ footer{
   @media screen and (max-width: $vp-medium) {
     display: grid;
     grid-template-columns: repeat(4, 25%);
-    grid-gap: 5px;
+    grid-gap: 2px;
     justify-items: center;
   }
 
   @media screen and (max-width: $vp-small) {
     display: grid;
     grid-template-columns: repeat(3, 33%);
-    grid-gap: 5px;
+    grid-gap: 2px;
     justify-items: center;
   }
 }
