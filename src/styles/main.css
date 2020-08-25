@@ -10,7 +10,7 @@
   font-weight: 600;
   src: url(../assets/fonts/Source-Sans-Pro/SourceSansPro-Bold.ttf); }
 
-/* Sizes
+/* Font-Sizes
 ---------------------------------------------------------------------------- */
 /* Colors
 ---------------------------------------------------------------------------- */
@@ -19,6 +19,8 @@
 /* Viewports
 ---------------------------------------------------------------------------- */
 /* Transitions
+---------------------------------------------------------------------------- */
+/* Paintings
 ---------------------------------------------------------------------------- */
 /* Headlines
 ############################################################################ */
@@ -68,7 +70,9 @@ p {
 ############################################################################ */
 body {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%; }
 
 main {
   padding-top: 80px; }
@@ -151,10 +155,10 @@ header {
   padding: 20px;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  background-color: #FFFFFF;
   border-bottom: solid;
   border-bottom-width: 1.5px;
-  border-bottom-color: black;
+  border-bottom-color: #000321;
   position: fixed;
   z-index: 2;
   top: 0;
@@ -174,7 +178,7 @@ header {
 
 footer {
   padding: 20px;
-  background-color: white;
+  background-color: #FFFFFF;
   width: 100%;
   height: 40px;
   position: fixed;
@@ -252,7 +256,7 @@ footer {
       .yearindicator__jahreszahl {
         grid-column: 1;
         grid-row: 1;
-        color: white;
+        color: #FFFFFF;
         font-family: Source Sans Pro Bold;
         font-size: 31.5px;
         justify-content: center; }
@@ -345,11 +349,11 @@ footer {
       left: 0;
       border: none; } }
   .card h1 {
-    color: white;
+    color: #FFFFFF;
     font-family: Source Sans Pro Bold;
     font-size: 25px; }
   .card p {
-    color: white;
+    color: #FFFFFF;
     font-family: Source Sans Pro Normal;
     font-size: 16px;
     margin-top: 0; }
@@ -369,7 +373,7 @@ footer {
     right: 10px;
     top: 10px;
     cursor: pointer;
-    color: white; }
+    color: #FFFFFF; }
   .card .card__button-back {
     position: absolute;
     right: 60px;
@@ -379,7 +383,7 @@ footer {
     -moz-user-select: -moz-none;
     -ms-user-select: none;
     user-select: none;
-    color: white; }
+    color: #FFFFFF; }
   .card .card__button-forward {
     position: absolute;
     right: 10px;
@@ -389,7 +393,7 @@ footer {
     -moz-user-select: -moz-none;
     -ms-user-select: none;
     user-select: none;
-    color: white; }
+    color: #FFFFFF; }
   .card-unvisible {
     display: none; }
   .card__information {

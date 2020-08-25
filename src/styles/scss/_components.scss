@@ -2,10 +2,10 @@ header{
     padding: 20px;
     align-items: center;
     justify-content:center;
-    background-color: white;
+    background-color: $w;
     border-bottom: solid;
     border-bottom-width: 1.5px;
-    border-bottom-color: black;
+    border-bottom-color: $b;
     position:fixed;
     z-index: 2;
     top: 0;
@@ -31,7 +31,7 @@ header{
 
 footer{
     padding: 20px;
-    background-color: white;
+    background-color: $w;
     width: 100%;
     height: 40px;
     position: fixed;
@@ -131,7 +131,7 @@ footer{
         &__jahreszahl {
             grid-column: 1;
             grid-row: 1;
-            color: white;;
+            color: $w;;
             font-family: Source Sans Pro Bold;
             font-size: $m-xl;
             justify-content: center;
@@ -231,10 +231,6 @@ footer{
     z-index: 3;
     cursor: default;
     }
-
-    &-off{
-        
-    }
   }
 
   .card{
@@ -262,13 +258,13 @@ footer{
     }
 
     h1{
-        color: white;
+        color: $w;
         font-family: Source Sans Pro Bold;
         font-size: $d-l;
     }
 
     p{
-        color: white;
+        color: $w;
         font-family: Source Sans Pro Normal;
         font-size: $d-m;
         margin-top: 0;
@@ -290,35 +286,35 @@ footer{
 
     .card__button-close{
         position: absolute;
-        right: 10px;
-        top: 10px;
+        right: $s;
+        top: $s;
         cursor: pointer;
-        color: white;
+        color: $w;
     }
 
     .card__button-back{
         position: absolute;
-        right: 60px;
-        bottom: 10px;
+        right: 6*$s;
+        bottom: $s;
         cursor: pointer;
         -webkit-user-select: none;
         -moz-user-select: -moz-none;
         -ms-user-select: none;
         user-select: none;
-        color: white;
+        color: $w;
         
     }
 
     .card__button-forward{
         position: absolute;
-        right: 10px;
-        bottom: 10px;
+        right: $s;
+        bottom: $s;
         cursor: pointer;
         -webkit-user-select: none;
         -moz-user-select: -moz-none;
         -ms-user-select: none;
         user-select: none;
-        color: white;
+        color: $w;
     }
 
     &-unvisible{
@@ -330,8 +326,8 @@ footer{
         margin-right: $m;
 
         @media screen and (max-width: $vp-medium) {
-            margin-left: 10px;
-            margin-right: 10px;
+            margin-left: $s;
+            margin-right: $s;
         }
 
         &-title{
