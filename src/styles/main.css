@@ -403,8 +403,11 @@ footer {
       max-width: 400px;
       overflow: hidden; }
     .card__information-description {
-      max-height: 200px;
-      overflow: hidden; }
+      max-height: 240px;
+      overflow: scroll; }
+      @media screen and (max-width: 1000px) {
+        .card__information-description {
+          max-height: 110px; } }
     .card__information-location {
       margin-right: 20px;
       position: absolute;
@@ -426,7 +429,7 @@ footer {
       position: absolute;
       top: 410px;
       max-height: 40px;
-      overflow: hidden; }
+      overflow: scroll; }
       @media screen and (max-width: 1000px) {
         .card__information-dimensions {
           position: absolute;
