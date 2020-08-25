@@ -28,6 +28,7 @@ Hierbei sollten die Bilder chronologisch sortiert in einem Grid angezigt werden.
  - HTML, CSS, JavaScript
  - SCSS als Präprozessor
  - Mustache als Template-Engine
+ - ESLint
 
 ### Anmerkungen zu zentralen Elementen
 
@@ -39,6 +40,7 @@ Die dynamische Erstellung der Trenner und Bilder beim Öffnen der Seite bringt e
 
 - **Card**
 Die jeweilige Card eines Bildes wird erst dynmaisch erstellt, wenn der Nutzer diese öffnen möchte. Eine Alternative wäre es, alle Cards direkt beim Öffnen der Website zu generieren. Dies würde aber die Ladezeit zu Beginn verlängern. Da die Ladezeit für eine einzelne Card sehr gering ist, macht es Sinn diese erst beim Öffnen einer Card zu generieren.
+Ein Problem bei den Cards ist die unterschiedliche Länge der Beschreibungen der Bilder. Um dieses Problem zu lösen, gibt es eine maximale Größe der Beschreibung. Überschreitet die Beschreibung diese Größe, kann der Nutzer innerhalb des Beschreibungsfeldes scrollen.
 
 - **Fehlende Bilder**
 Zu den Bildern, welche einen nicht funktionierenden Link haben, sind in dem JSON-File bei den Dimensionen jeweils die Höhe und die Breite mit 0 angegeben. So gibt es einen Anhaltspunkt, mit dem man die nicht funktionierenden Bilder herausfinden kann. Diese Bilder werden also zu Beginn aus dem Datensatz entfernt.
@@ -63,4 +65,4 @@ Die Website ist für 2 Viewports (Desktop und Mobile) angepasst. Ergänzend dazu
 		npm run build
 
 #
-*Ein Projekt im Zuge des Moduls "Frontend Development" im Schwerpunkt "Web Development" im Studiengang Medieninformatik an der TH-Köln, Campus Gummersbach*
+*Ein Projekt im Zuge des Moduls "Frontend Development" im Schwerpunkt "Web Development" des Studiengangs Medieninformatik an der TH-Köln, Campus Gummersbach*
