@@ -13,8 +13,8 @@ async function fetchData(apiURL, parseJSON = true) {
 }
 
 /*
-Overlay mit Karte
- */
+  Overlay mit Karte
+*/
 
 async function generateCard(paintingid, data, reihenfolge, indicator) {
   const card = document.querySelector(`.card__${paintingid}`);
@@ -165,8 +165,8 @@ async function addoverlay(data) {
 }
 
 /*
-Bilder werden in die Struktur eingefügt
- */
+  Bilder werden in die Struktur eingefügt
+*/
 
 async function addpaintings(data) {
   console.log(data);
@@ -191,20 +191,8 @@ async function addpaintings(data) {
     }
   });
 
-  // Ersetzt Bilder, welche nicht geladen wurden
-  document.querySelectorAll('.painting').forEach((painting) => {
-    img = painting.querySelector('img');
-    img.onerror = function () {
-      painting.innerHTML = ' <img src="http://lucascranach.org/imageserver/DE_AGGD_440_FR-none/pyramid/DE_AGGD_440_FR-none_2011_Overall-m.jpg" alt="nicht verfügbar">';
-    };
-  });
-
   addoverlay(data);
 }
-
-/*
-Main-Funktion mit Sprachen-Wechsler
- */
 
 function removepaintings() {
   const tmp = document.querySelectorAll('.paintinglist');
@@ -212,6 +200,10 @@ function removepaintings() {
     element.innerHTML = '';
   });
 }
+
+/*
+  Main-Funktion mit Sprachen-Wechsler
+*/
 
 async function main() {
   let DataDe = await fetchData('./data/json/cda-paintings-v2.de.json');
@@ -227,7 +219,6 @@ async function main() {
       delete Data[i];
     }
   }
-
   addpaintings(Data);
 
   // Switch Langauge

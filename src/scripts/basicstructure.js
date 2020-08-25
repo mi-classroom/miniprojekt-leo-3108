@@ -13,8 +13,8 @@ async function fetchData(apiURL, parseJSON = true) {
 }
 
 /*
-Accordeon
- */
+  Accordeon
+*/
 
 function togglevisibility(year) {
   const paintinglist = document.querySelector(`.paintinglist__${year}`);
@@ -40,6 +40,10 @@ function accordeon(listesortiert) {
     });
   });
 
+  /*
+    Button um alle Accordeons einzuklappen
+  */
+
   const buttonbot = document.querySelector('.button-bot');
   buttonbot.addEventListener('click', (event) => {
     listesortiert.forEach((jahr) => {
@@ -49,10 +53,10 @@ function accordeon(listesortiert) {
 }
 
 /*
-Erstellt die Grundstruktur mit den Jahres-Teilbereichen
- */
+  Erstellt die Grundstruktur mit den Jahres-Teilbereichen
+*/
 
-async function main() {
+async function createstructure() {
   let DataDe = await fetchData('./data/json/cda-paintings-v2.de.json');
   DataDe = DataDe.items;
 
@@ -105,4 +109,4 @@ async function main() {
   accordeon(listesortiert);
 }
 
-main();
+createstructure();
