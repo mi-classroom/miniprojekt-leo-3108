@@ -32,26 +32,26 @@ Hierbei sollten die Bilder chronologisch sortiert in einem Grid angezigt werden.
 
 ### Anmerkungen zu zentralen Elementen
 
- - **Struktur**
+ - **Struktur:**
 Beim Öffnen der Website werden zuerst die Jahrestrenner dynamisch erstellt. Dafür werden alle Jahreszahlen aus dem Datensatz extrahiert und sortiert.
 Daraufhin werden die Bilder dynamisch eingefügt. Es wird für jedes Bild geguckt, welchem Jahrestrenner es zugeordnet werden muss.
 Für die Erstellung der Jahrestrenner und der Bilder wurde die Template-Engine *"Mustache"* verwendet.
 Die dynamische Erstellung der Trenner und Bilder beim Öffnen der Seite bringt eine kleine Ladezeit mit sich. Diese würde sich mit einem Static-Page-Generator umgehen lassen, in dem die Website schon serverseitig gerendert wird.
 
-- **Card**
+- **Card:**
 Die jeweilige Card eines Bildes wird erst dynmaisch erstellt, wenn der Nutzer diese öffnen möchte. Eine Alternative wäre es, alle Cards direkt beim Öffnen der Website zu generieren. Dies würde aber die Ladezeit zu Beginn verlängern. Da die Ladezeit für eine einzelne Card sehr gering ist, macht es Sinn diese erst beim Öffnen einer Card zu generieren.
 Ein Problem bei den Cards ist die unterschiedliche Länge der Beschreibungen der Bilder. Um dieses Problem zu lösen, gibt es eine maximale Größe der Beschreibung. Überschreitet die Beschreibung diese Größe, kann der Nutzer innerhalb des Beschreibungsfeldes scrollen.
 
-- **Fehlende Bilder**
+- **Fehlende Bilder:**
 Zu den Bildern, welche einen nicht funktionierenden Link haben, sind in dem JSON-File bei den Dimensionen jeweils die Höhe und die Breite mit 0 angegeben. So gibt es einen Anhaltspunkt, mit dem man die nicht funktionierenden Bilder herausfinden kann. Diese Bilder werden also zu Beginn aus dem Datensatz entfernt.
 
-- **Sprachwechsler**
+- **Sprachwechsler:**
 Wird der Sprachwechsler betätigt, so wird der Datensatz für die Bilder und Cards gewechselt und die Bilder werden gelöscht und wieder neu generiert. Beim Öffnen einer Card wird nun der neue Datensatz mit der jeweiligen Sprache verwendet.
 
-- **Akkordeon**
+- **Akkordeon:**
 Durch Klicken auf einen Jahrestrenner wird die jeweilige Klasse von *visible* und *invisible* geändert. 
 
-- **Viewports**
+- **Viewports:**
 Die Website ist für 2 Viewports (Desktop und Mobile) angepasst. Ergänzend dazu gibt es einen weiteren, dritten Viewport. Dieser basiert auf dem Mobile-Layout und besteht aus 4 Spalten mit Bildern. Dieser ist für Smartphones im Landscape-Modus oder Tablets im Portraitmodus gedacht und soll den Übergang zwischen Mobile und Desktop-Version etwas weicher gestalten.
 
 
