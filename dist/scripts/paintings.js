@@ -16,7 +16,7 @@ async function fetchData(apiURL, parseJSON = true) {
   Overlay mit Karte
 */
 
-async function generateCard(paintingid, data, reihenfolge, indicator) {
+async function generateNextCard(paintingid, data, reihenfolge, indicator) {
   const card = document.querySelector(`.card__${paintingid}`);
   const overlay = document.querySelector('.overlay-on');
   let elementdata;
@@ -65,7 +65,7 @@ async function generateCard(paintingid, data, reihenfolge, indicator) {
       const newID = reihenfolge[indicator - 1];
       const newcard = document.querySelector(`.card__${newID}`);
       newcard.className = `card__${newID} card`;
-      generateCard(reihenfolge[indicator - 1],
+      generateNextCard(reihenfolge[indicator - 1],
         data, reihenfolge, indicator - 1);
     }
   });
@@ -76,7 +76,7 @@ async function generateCard(paintingid, data, reihenfolge, indicator) {
       card.innerHTML = '';
       const newcard = document.querySelector(`.card__${reihenfolge[indicator + 1]}`);
       newcard.className = `card__${reihenfolge[indicator + 1]} card`;
-      generateCard(reihenfolge[indicator + 1], data, reihenfolge, indicator + 1);
+      generateNextCard(reihenfolge[indicator + 1], data, reihenfolge, indicator + 1);
     }
   });
 }
@@ -146,7 +146,7 @@ async function addoverlay(data) {
           card.innerHTML = '';
           const newcard = document.querySelector(`.card__${reihenfolge[indicator - 1]}`);
           newcard.className = `card__${reihenfolge[indicator - 1]} card`;
-          generateCard(reihenfolge[indicator - 1],
+          generateNextCard(reihenfolge[indicator - 1],
             data, reihenfolge, indicator - 1);
         }
       });
@@ -157,7 +157,7 @@ async function addoverlay(data) {
           card.innerHTML = '';
           const newcard = document.querySelector(`.card__${reihenfolge[indicator + 1]}`);
           newcard.className = `card__${reihenfolge[indicator + 1]} card`;
-          generateCard(reihenfolge[indicator + 1], data, reihenfolge, indicator + 1);
+          generateNextCard(reihenfolge[indicator + 1], data, reihenfolge, indicator + 1);
         }
       });
     });
@@ -169,8 +169,6 @@ async function addoverlay(data) {
 */
 
 async function addpaintings(data) {
-  console.log(data);
-
   const paintingsTemplate = await fetchData('./templates/painting.html', false);
 
   data.forEach((element) => {
@@ -237,6 +235,7 @@ async function main() {
       }
     }
 
+    // Alle Bilder werden gelöscht und wieder neu hinzugefügt
     removepaintings();
     addpaintings(Data);
   };
