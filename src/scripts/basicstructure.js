@@ -29,7 +29,7 @@ function togglevisibility(year) {
   }
 }
 
-function accordeon(listesortiert) {
+function createaccordeon(listesortiert) {
   const yearindicatorButtons = document.querySelectorAll('.yearindicator');
 
   yearindicatorButtons.forEach((button) => {
@@ -106,7 +106,7 @@ async function createstructure() {
     });
     mustacheElement.innerHTML += renderedSection;
   });
-  accordeon(listesortiert);
+  createaccordeon(listesortiert);
 }
 
 createstructure();
