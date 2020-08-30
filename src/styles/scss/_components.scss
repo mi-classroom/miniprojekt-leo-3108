@@ -332,6 +332,7 @@ footer{
 
         &-title{
             max-width: 400px;
+            max-height: 65px;
             overflow: hidden;
 
             @media screen and (max-width: $vp-medium) {

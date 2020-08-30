@@ -405,6 +405,7 @@ footer {
         margin-right: 10px; } }
     .card__information-title {
       max-width: 400px;
+      max-height: 65px;
       overflow: hidden; }
     .card__information-description {
       max-height: 240px;
