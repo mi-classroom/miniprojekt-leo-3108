@@ -241,6 +241,21 @@ function toggleMobileMenu() {
 }
 
 /*
+  Funktion zum ändern der Größe
+*/
+
+function switchdimensions() {
+  document.querySelector('.vorschaubilder-select').onchange = async function () {
+    const wert = document.querySelector('.select-vorschaubilder').value;
+
+    if (wert === 'klein') {
+    }
+    if (wert === 'groß') {
+    }
+  };
+}
+
+/*
   Main-Funktion mit Sprachen-Wechsler
 */
 
@@ -261,6 +276,7 @@ async function main() {
   addpaintings(Data);
   toggleMenu();
   toggleMobileMenu();
+  switchdimensions();
 
   // Switch Langauge
 

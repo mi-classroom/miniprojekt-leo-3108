@@ -200,6 +200,62 @@ function removepaintings() {
 }
 
 /*
+  Menu-Funktion für den Header in der Dektop-Version
+*/
+
+function toggleMenu() {
+  const headerButton = document.querySelector('.button-top');
+  const headerMenu = document.querySelector('.header-menu__unvisible');
+
+  headerButton.addEventListener('click', () => {
+    if (headerMenu.className === 'header-menu__unvisible') {
+      headerMenu.className = 'header-menu__visible';
+      headerButton.innerHTML = '<i class="material-icons" style="font-size:45px;">close</i>';
+    } else {
+      headerMenu.className = 'header-menu__unvisible';
+      headerButton.innerHTML = '<i class="material-icons" style="font-size:45px;">menu</i>';
+    }
+  });
+}
+
+/*
+  Menu-Funktion für den Footer in der Mobile-Version
+*/
+
+function toggleMobileMenu() {
+  const Button = document.querySelector('.button-bot');
+  const Footer = document.querySelector('footer');
+  const Settings = document.querySelector('.footer-settings__unvisible');
+
+  Button.addEventListener('click', () => {
+    if (Footer.className === 'footer') {
+      Footer.className = 'footer__open';
+      Settings.className = 'footer-settings';
+      Button.innerHTML = '<i class="material-icons" style="font-size:45px;">close</i>';
+    } else {
+      Footer.className = 'footer';
+      Settings.className = 'footer-settings__unvisible';
+      Button.innerHTML = '<i class="material-icons" style="font-size:45px;">menu</i>';
+    }
+  });
+}
+
+/*
+  Funktion zum ändern der Größe
+*/
+
+function switchdimensions() {
+  document.querySelector('.vorschaubilder-select').onchange = async function () {
+    const wert = document.querySelector('.select-vorschaubilder').value;
+
+    if (wert === 'klein') {
+    }
+    if (wert === 'groß') {
+    }
+  };
+}
+
+/*
   Main-Funktion mit Sprachen-Wechsler
 */
 
@@ -218,6 +274,9 @@ async function main() {
     }
   }
   addpaintings(Data);
+  toggleMenu();
+  toggleMobileMenu();
+  switchdimensions();
 
   // Switch Langauge
 

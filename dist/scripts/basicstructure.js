@@ -39,17 +39,6 @@ function createaccordeon(listesortiert) {
       togglevisibility(year);
     });
   });
-
-  /*
-    Button um alle Accordeons einzuklappen
-  */
-
-  const buttonbot = document.querySelector('.button-bot');
-  buttonbot.addEventListener('click', (event) => {
-    listesortiert.forEach((jahr) => {
-      togglevisibility(jahr);
-    });
-  });
 }
 
 /*
