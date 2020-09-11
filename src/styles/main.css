@@ -88,6 +88,11 @@ header {
   grid-template-columns: repeat(12, 60px);
   grid-gap: 20px; }
 
+.header-menu__visible {
+  display: grid;
+  grid-template-columns: repeat(12, 60px);
+  grid-gap: 20px; }
+
 footer {
   display: none; }
   @media screen and (max-width: 600px) {
@@ -168,13 +173,74 @@ header {
     grid-column: 1/11;
     font-family: Source Sans Pro Bold;
     font-size: 31.5px; }
-  header .dropdown {
+  header .button-top {
     grid-column: 12;
     justify-content: end;
-    direction: rtl; }
+    direction: rtl;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    user-select: none; }
   @media screen and (max-width: 1000px) {
     header {
       display: none; } }
+
+.header-menu__visible .infotext {
+  grid-column: 1/7; }
+
+.header-menu__visible .sprache {
+  grid-column: 9;
+  position: absolute;
+  top: 90px; }
+
+.header-menu__visible .language-select {
+  grid-column: 11;
+  position: absolute;
+  top: 110px; }
+
+.header-menu__visible .darkmode {
+  grid-column: 9;
+  position: absolute;
+  top: 150px; }
+
+.header-menu__visible .darkmode-select {
+  grid-column: 11;
+  position: absolute;
+  top: 170px; }
+
+.header-menu__visible .vorschaubilder {
+  grid-column: 9;
+  position: absolute;
+  top: 210px; }
+
+.header-menu__visible .vorschaubilder-select {
+  grid-column: 11;
+  position: absolute;
+  top: 230px; }
+
+.header-menu__visible .login {
+  grid-column: 9;
+  position: absolute;
+  top: 270px; }
+
+.header-menu__visible .login-benutzername {
+  grid-column: 9;
+  position: absolute;
+  top: 330px; }
+
+.header-menu__visible .login-passwort {
+  grid-column: 9;
+  position: absolute;
+  top: 360px; }
+
+.header-menu__visible .login-button {
+  grid-column: 9;
+  position: absolute;
+  top: 390px; }
+
+.header-menu__unvisible {
+  display: none; }
 
 footer {
   padding: 20px;

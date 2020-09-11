@@ -83,6 +83,12 @@ header{
   grid-gap: $m;
 }
 
+.header-menu__visible{
+  display: grid;
+  grid-template-columns: repeat(12, 60px);
+  grid-gap: $m;
+}
+
 footer{
   display: none;
 

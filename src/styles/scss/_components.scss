@@ -18,15 +18,96 @@ header{
         font-size: $d-xl;
     }
 
-    .dropdown {
+    .button-top{
         grid-column: 12;
         justify-content: end;
         direction: rtl;
+
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: -moz-none;
+        -ms-user-select: none;
+        user-select: none;
     }
 
     @media screen and (max-width: $vp-medium) {
         display: none;
     }
+}
+
+.header-menu{
+    &__visible{
+
+        .infotext{
+            grid-column: 1/7;
+        }
+
+        .sprache{
+            grid-column: 9;
+            position: absolute;
+            top: 90px;
+        }
+
+        .language-select{
+            grid-column: 11;
+            position: absolute;
+            top: 110px;
+        }
+
+        .darkmode{
+            grid-column: 9;
+            position: absolute;
+            top: 150px;
+        }
+
+        .darkmode-select{
+            grid-column: 11;
+            position: absolute;
+            top: 170px;
+        }
+
+        .vorschaubilder{
+            grid-column: 9;
+            position: absolute;
+            top: 210px;
+        }
+
+        .vorschaubilder-select{
+            grid-column: 11;
+            position: absolute;
+            top: 230px;
+        }
+
+        .login{
+            grid-column: 9;
+            position: absolute;
+            top: 270px;
+        }
+
+        .login-benutzername{
+            grid-column: 9;
+            position: absolute;
+            top: 330px;
+        }
+
+        .login-passwort{
+            grid-column: 9;
+            position: absolute;
+            top: 360px;
+        }
+
+        .login-button{
+            grid-column: 9;
+            position: absolute;
+            top: 390px;
+        }
+
+    }
+
+    &__unvisible{
+        display: none;
+    }
+
 }
 
 footer{

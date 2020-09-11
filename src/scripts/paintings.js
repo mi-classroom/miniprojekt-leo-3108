@@ -200,6 +200,25 @@ function removepaintings() {
 }
 
 /*
+  Blendet das Header-Menu ein
+*/
+
+function toggleMenu() {
+  const headerButton = document.querySelector('.button-top');
+  const headerMenu = document.querySelector('.header-menu__unvisible');
+
+  headerButton.addEventListener('click', () => {
+    if (headerMenu.className === 'header-menu__unvisible') {
+      headerMenu.className = 'header-menu__visible';
+      headerButton.innerHTML = '<i class="material-icons" style="font-size:45px;">close</i>';
+    } else {
+      headerMenu.className = 'header-menu__unvisible';
+      headerButton.innerHTML = '<i class="material-icons" style="font-size:45px;">menu</i>';
+    }
+  });
+}
+
+/*
   Main-Funktion mit Sprachen-Wechsler
 */
 
@@ -218,6 +237,7 @@ async function main() {
     }
   }
   addpaintings(Data);
+  toggleMenu();
 
   // Switch Langauge
 
