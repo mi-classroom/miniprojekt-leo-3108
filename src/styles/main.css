@@ -250,7 +250,8 @@ footer {
   position: fixed;
   z-index: 2;
   bottom: 0;
-  left: 0; }
+  left: 0;
+  border-top: 1px solid #000321; }
   footer .logo-bot {
     display: inline;
     grid-column: 1;
@@ -268,6 +269,44 @@ footer {
     @media screen and (max-width: 1000px) {
       footer .button-bot {
         grid-column: 4; } }
+
+.footer__open {
+  height: 500px; }
+  .footer__open .footer-settings .sprache {
+    position: absolute;
+    bottom: 400px; }
+  .footer__open .footer-settings .language-select {
+    position: absolute;
+    bottom: 430px;
+    left: 220px; }
+  .footer__open .footer-settings .darkmode {
+    position: absolute;
+    bottom: 350px; }
+  .footer__open .footer-settings .darkmode-select {
+    position: absolute;
+    bottom: 380px;
+    left: 220px; }
+  .footer__open .footer-settings .vorschaubilder {
+    position: absolute;
+    bottom: 300px; }
+  .footer__open .footer-settings .vorschaubilder-select {
+    position: absolute;
+    bottom: 330px;
+    left: 220px; }
+  .footer__open .footer-settings .login {
+    position: absolute;
+    bottom: 230px; }
+  .footer__open .footer-settings .login-benutzername {
+    position: absolute;
+    bottom: 220px; }
+  .footer__open .footer-settings .login-passwort {
+    position: absolute;
+    bottom: 190px; }
+  .footer__open .footer-settings .login-button {
+    position: absolute;
+    bottom: 150px; }
+  .footer__open .footer-settings__unvisible {
+    display: none; }
 
 .yearindicator {
   justify-content: center;

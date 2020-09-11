@@ -200,7 +200,7 @@ function removepaintings() {
 }
 
 /*
-  Blendet das Header-Menu ein
+  Menu-Funktion für den Header in der Dektop-Version
 */
 
 function toggleMenu() {
@@ -214,6 +214,28 @@ function toggleMenu() {
     } else {
       headerMenu.className = 'header-menu__unvisible';
       headerButton.innerHTML = '<i class="material-icons" style="font-size:45px;">menu</i>';
+    }
+  });
+}
+
+/*
+  Menu-Funktion für den Footer in der Mobile-Version
+*/
+
+function toggleMobileMenu() {
+  const Button = document.querySelector('.button-bot');
+  const Footer = document.querySelector('footer');
+  const Settings = document.querySelector('.footer-settings__unvisible');
+
+  Button.addEventListener('click', () => {
+    if (Footer.className === 'footer') {
+      Footer.className = 'footer__open';
+      Settings.className = 'footer-settings';
+      Button.innerHTML = '<i class="material-icons" style="font-size:45px;">close</i>';
+    } else {
+      Footer.className = 'footer';
+      Settings.className = 'footer-settings__unvisible';
+      Button.innerHTML = '<i class="material-icons" style="font-size:45px;">menu</i>';
     }
   });
 }
@@ -238,6 +260,7 @@ async function main() {
   }
   addpaintings(Data);
   toggleMenu();
+  toggleMobileMenu();
 
   // Switch Langauge
 

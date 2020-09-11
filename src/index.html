@@ -46,6 +46,8 @@
         </select>
       </div>
 
+      <h4 class=darkmode>Darkmode</h4>
+
       <div class="dropdown darkmode-select">
         <select>
           <div class="dropdown__content">
@@ -54,8 +56,6 @@
           </div>
         </select>
       </div>
-
-      <h4 class=darkmode>Darkmode</h4>
 
       <h4 class=vorschaubilder>Vorschaubilder</h4>
 
@@ -81,11 +81,53 @@
   <main>
   </main>
 
-  <footer>
+  <footer class=footer>
     <div class=logo-bot>CDA_</div>
     <div class=button-bot>
       <i class="material-icons" style="font-size:45px;">menu</i>
     </div>
+
+    <div class="footer-settings__unvisible">
+      <h3 class=sprache>Sprache</h3>
+
+      <div class="dropdown language-select">
+        <select>
+          <div class="dropdown__content">
+            <option value="de">Deutsch</a>
+            <option value="en">Englisch</a>
+          </div>
+        </select>
+      </div>
+
+      <h3 class=darkmode>Darkmode</h3>
+
+      <div class="dropdown darkmode-select">
+        <select>
+          <div class="dropdown__content">
+            <option value="aus">aus</a>
+            <option value="ein">ein</a>
+          </div>
+        </select>
+      </div>
+
+      <h3 class=vorschaubilder>Vorschaubilder</h3>
+
+      <div class="dropdown vorschaubilder-select">
+        <select>
+          <div class="dropdown__content">
+            <option value="klein">klein</a>
+            <option value="groß">groß</a>
+          </div>
+        </select>
+      </div>
+
+      <h3 class=login>Login</h3>
+      <input class=login-benutzername type="text" id="login-benutzername" name="fname">
+      <input class=login-passwort type="password" id="login-passwort" name="fname">
+
+      <button class="login-button">einloggen</button>
+    </div>
+
   </footer>
   <div class="overlay-off">
   </div>
