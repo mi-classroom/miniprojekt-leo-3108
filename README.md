@@ -2,6 +2,8 @@
 
 [Link zu GitHub Pages](https://leo-3108.github.io/mi-webdev-fd-miniprojekt/)
 
+LiveCoding: [Link zu GitHub Pages](https://leo-3108.github.io/mi-webdev-fd-miniprojekt-livecoding/)
+
 ## Dokumentation
 
 Das Ziel des Projektes war die Umsetzung einer Bildergalerie für das **Cranach Digital Archive**.
